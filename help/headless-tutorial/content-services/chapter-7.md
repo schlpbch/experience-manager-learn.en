@@ -94,7 +94,7 @@ Because the Editable Template of the Events API (`/content/wknd-mobile/en/api/ev
 
 The following is a distillation of the code in the Mobile App's `MainActivity` responsible for invoking AEM Content Services to collect the content that drives the Mobile App experience.
 
-```
+```java
 protected void onCreate(Bundle savedInstanceState) {
     ...
     // Create the custom objects that will map the JSON -> POJO -> View elements
@@ -131,7 +131,7 @@ private void initApp(final List<ViewBinder> viewBinders) {
 
 Next we'll look at the `LogoViewBinder`, which is simple, but highlights several important considerations.
 
-```
+```java
 public class LogoViewBinder implements ViewBinder {
     ...
     public void bind(JSONObject jsonResponse) throws JSONException, IOException {
@@ -161,7 +161,7 @@ Notice that we must provide the AEM schema, host and port (via `aemHost`) to the
 
 While optional, the use of the [Jackson ObjectMapper](https://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html) or similar capabilities provided by other libraries like Gson, helps map complex JSON structures to Java POJOs without the tedium of dealing directly with the native JSON objects themselves. In this simple case we map the `src` key from the `image` JSON object, to the `src` attribute in the Image POJO directly via the `@JSONProperty` annotation.
 
-```
+```java
 package com.adobe.aem.guides.wknd.mobile.android.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
